@@ -280,19 +280,22 @@ h1, h2 {
 
 /* MENU PAGE */
 .menu-page {
-  background:
-    radial-gradient(1200px 700px at 10% -10%, #fff1e7 0%, transparent 60%),
-    radial-gradient(900px 600px at 100% 0%, #ffd1bf 0%, transparent 55%),
-    linear-gradient(180deg, #ffeade 0%, #f7d8cf 100%);
+  background: #e46b3a;
 }
 .menu-page .header {
-  background: rgba(255, 248, 241, 0.94);
-  border-color: rgba(64, 44, 32, 0.1);
+  background: rgba(255, 235, 225, 0.95);
+  border-color: transparent;
+  border-width: 0;
 }
 .menu-hero {
   max-width: 100%;
   text-align: center;
   padding-bottom: 0;
+}
+.menu-page .menu-hero {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: menu-rise 700ms ease 120ms forwards;
 }
 .menu-page .menu-hero h1 {
   font-size: clamp(54px, 10vw, 92px);
@@ -311,11 +314,22 @@ h1, h2 {
   gap: 22px;
 }
 .menu-page .menu-card {
-  background: #fff5ef;
-  border-color: rgba(255, 74, 28, 0.16);
+  background: rgba(255, 216, 198, 0.95);
+  border-color: transparent;
+  border-width: 0;
   border-radius: 26px;
-  box-shadow: 0 16px 30px rgba(64, 44, 32, 0.08);
+  box-shadow: 0 18px 32px rgba(224, 59, 20, 0.18);
+  opacity: 0;
+  transform: translateY(16px);
+  animation: menu-rise 760ms ease forwards;
 }
+.menu-page .menu-card:nth-child(1) { animation-delay: 220ms; }
+.menu-page .menu-card:nth-child(2) { animation-delay: 300ms; }
+.menu-page .menu-card:nth-child(3) { animation-delay: 380ms; }
+.menu-page .menu-card:nth-child(4) { animation-delay: 460ms; }
+.menu-page .menu-card:nth-child(5) { animation-delay: 540ms; }
+.menu-page .menu-card:nth-child(6) { animation-delay: 620ms; }
+.menu-page .menu-card:nth-child(7) { animation-delay: 700ms; }
 .menu-page .menu-title {
   font-size: 26px;
   letter-spacing: 0.02em;
@@ -329,7 +343,7 @@ h1, h2 {
   letter-spacing: 0.01em;
 }
 .menu-page .menu-item {
-  border-bottom: 1px dashed rgba(255, 74, 28, 0.2);
+  border-bottom: 0;
 }
 .menu-page .addon-list {
   font-size: 16px;
@@ -475,6 +489,13 @@ h1, h2 {
 
 @keyframes sublogo-type {
   to { width: var(--sublogo-w); }
+}
+
+@keyframes menu-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 920px) {

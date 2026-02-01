@@ -80,9 +80,6 @@ window.addEventListener("load", () => {
     introBrand.style.transition = `transform ${durationMs}ms cubic-bezier(.2,.9,.2,1)`;
     introBrand.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
 
-    // 5) Content erin laten komen
-    showMain();
-
     // 6) Na animatie: intro weg, header-logo tonen
     setTimeout(() => {
       headerBrand.style.visibility = "visible";
@@ -90,6 +87,7 @@ window.addEventListener("load", () => {
 
       setTimeout(() => {
         intro.remove();
+        showMain();
       }, 350);
     }, durationMs);
   }, moveStartMs);
