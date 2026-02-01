@@ -1,4 +1,37 @@
 window.addEventListener("load", () => {
+  const initParallax = () => {
+    const items = Array.from(document.querySelectorAll("[data-parallax]"));
+    if (!items.length) return;
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const viewport = window.innerHeight || 0;
+      items.forEach((el) => {
+        const speed = Number.parseFloat(el.dataset.parallax) || 0.1;
+        const rect = el.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const rawOffset = (center - viewport / 2) * -speed;
+        const max = rect.height * 0.18;
+        const offset = Math.max(-max, Math.min(max, rawOffset));
+        el.style.setProperty("--icon-offset", `${offset.toFixed(2)}px`);
+      });
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  };
+
+  initParallax();
+
   const intro = document.getElementById("intro");
   const introBrand = document.getElementById("introBrand");
   const introLogo = document.getElementById("introLogo");

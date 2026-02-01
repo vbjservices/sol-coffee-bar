@@ -3,11 +3,11 @@
   --bg-2: #fbd5c0;
   --ink: #2b2017;
   --muted: rgba(43, 32, 23, 0.65);
-  --brand: #ff4a1c;
-  --brand-deep: #e03b14;
-  --brand-soft: #ffe2d6;
-  --accent: #ff4a1c;
-  --accent-2: #f8d9c8;
+  --brand: #e14a1b;
+  --brand-deep: #b93b16;
+  --brand-soft: #ffd7c5;
+  --accent: #e14a1b;
+  --accent-2: #f3c8b4;
   --card: #fff7f0;
   --shadow: 0 16px 40px rgba(43, 32, 23, 0.08);
   --radius: 22px;
@@ -323,6 +323,48 @@ h1, h2 {
   transform: translateY(16px);
   animation: menu-rise 760ms ease forwards;
 }
+.menu-page .menu-card--coffee {
+  position: relative;
+  overflow: hidden;
+}
+.menu-page .menu-card--coffee > * {
+  position: relative;
+  z-index: 1;
+}
+.menu-page .menu-card--coffee::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 360px;
+  height: 360px;
+  background: url("assets/coffee.png") no-repeat center / contain;
+  opacity: 0.22;
+  pointer-events: none;
+  transform: translate(-50%, calc(-50% + var(--icon-offset, 0px))) rotate(-8deg);
+  will-change: transform;
+}
+.menu-page .menu-card--matcha {
+  position: relative;
+  overflow: hidden;
+}
+.menu-page .menu-card--matcha > * {
+  position: relative;
+  z-index: 1;
+}
+.menu-page .menu-card--matcha::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 300px;
+  background: url("assets/matcha.png") no-repeat center / contain;
+  opacity: 0.22;
+  pointer-events: none;
+  transform: translate(-50%, calc(-50% + var(--icon-offset, 0px))) rotate(-6deg);
+  will-change: transform;
+}
 .menu-page .menu-card:nth-child(1) { animation-delay: 220ms; }
 .menu-page .menu-card:nth-child(2) { animation-delay: 300ms; }
 .menu-page .menu-card:nth-child(3) { animation-delay: 380ms; }
@@ -551,6 +593,19 @@ h1, h2 {
   }
   .menu-page .menu-item span:first-child {
     font-size: 18px;
+  }
+  .menu-page .menu-card--coffee::after {
+    width: 270px;
+    height: 270px;
+    left: 50%;
+    top: 50%;
+    opacity: 0.2;
+    transform: translate(-50%, calc(-50% + var(--icon-offset, 0px))) rotate(-8deg);
+  }
+  .menu-page .menu-card--matcha::after {
+    width: 225px;
+    height: 225px;
+    opacity: 0.2;
   }
 }
 
