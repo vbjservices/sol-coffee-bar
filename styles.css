@@ -404,7 +404,7 @@ h1, h2 {
   height: auto;
   left: var(--sun-left);
   top: var(--sun-top);
-  transform: translate(-50%, -220%) scale(0.9);
+  transform: translate(-50%, -220%) scale(0.9) rotate(180deg);
   opacity: 0;
   pointer-events: none;
   filter: drop-shadow(0 10px 18px rgba(43, 32, 23, 0.16));
@@ -426,7 +426,13 @@ h1, h2 {
 }
 .intro__sun.is-drop {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1) rotate(180deg);
+  animation: sun-spin 0.6s linear 0.55s 1 forwards;
+}
+
+@keyframes sun-spin {
+  from { transform: translate(-50%, -50%) scale(1) rotate(180deg); }
+  to { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
 }
 .intro__sublogo.is-reveal {
   opacity: 1;
