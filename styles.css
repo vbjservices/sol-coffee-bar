@@ -18,6 +18,7 @@
   --sun-origin-x: 50%;
   --sun-origin-y: 50%;
   --sun-size: 20%;
+  --sublogo-type-ms: 900ms;
 }
 
 * { box-sizing: border-box; }
@@ -435,14 +436,20 @@ h1, h2 {
   filter: drop-shadow(0 10px 18px rgba(43, 32, 23, 0.16));
 }
 .intro__sublogo {
-  width: min(260px, 55vw);
+  width: 0;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-6px);
+  --sublogo-w: min(260px, 55vw);
+  transition: opacity 0.2s ease, transform 0.6s ease;
+}
+.intro__sublogo-img {
+  width: var(--sublogo-w);
   height: auto;
   display: block;
-  max-width: 100%;
   filter: drop-shadow(0 12px 20px rgba(43, 32, 23, 0.16));
-  opacity: 0;
-  transform: translateX(-14px);
-  transition: opacity 0.4s ease, transform 0.6s ease;
 }
 .intro__logo.is-in {
   opacity: 1;
@@ -463,6 +470,11 @@ h1, h2 {
 .intro__sublogo.is-reveal {
   opacity: 1;
   transform: translateX(0);
+  animation: sublogo-type var(--sublogo-type-ms, 900ms) steps(12, end) 0s 1 forwards;
+}
+
+@keyframes sublogo-type {
+  to { width: var(--sublogo-w); }
 }
 
 @media (max-width: 920px) {
@@ -489,7 +501,7 @@ h1, h2 {
   }
   .brand__sublogo { height: 15px; }
   .intro__logo { width: min(380px, 80vw); }
-  .intro__sublogo { width: min(210px, 72vw); }
+  .intro__sublogo { --sublogo-w: min(210px, 72vw); }
   .main {
     padding: 36px 16px 80px;
     gap: 22px;

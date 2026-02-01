@@ -19,9 +19,22 @@ window.addEventListener("load", () => {
   const startMs = 120;
   const sunDropDelayMs = 160;
   const logoInMs = 450;
-  const sublogoInMs = 900;
   const holdMs = 350;
   const durationMs = 650;
+
+  const parseMs = (value) => {
+    const raw = value.trim();
+    if (!raw) return NaN;
+    if (raw.endsWith("ms")) return Number.parseFloat(raw);
+    if (raw.endsWith("s")) return Number.parseFloat(raw) * 1000;
+    return Number.parseFloat(raw);
+  };
+
+  const sublogoTypeRaw = getComputedStyle(introSublogo)
+    .getPropertyValue("--sublogo-type-ms");
+  const sublogoTypeMs = Number.isFinite(parseMs(sublogoTypeRaw))
+    ? parseMs(sublogoTypeRaw)
+    : 900;
 
   setTimeout(() => {
     introLogo.classList.add("is-in");
@@ -36,10 +49,12 @@ window.addEventListener("load", () => {
   }, startMs + logoInMs);
 
   const dropStartMs = startMs + sunDropDelayMs;
-  const moveStartMs = startMs + logoInMs + sublogoInMs + holdMs;
-  const introEndMs = moveStartMs + durationMs + 350;
-  const spinMs = Math.max(600, introEndMs - dropStartMs);
+  const sublogoStartMs = startMs + logoInMs;
+  const spinStopMs = sublogoStartMs + (sublogoTypeMs / 3);
+  const spinMs = Math.max(200, spinStopMs - dropStartMs);
   introSun.style.setProperty("--sun-spin", `${spinMs}ms`);
+
+  const moveStartMs = sublogoStartMs + sublogoTypeMs + holdMs;
 
   setTimeout(() => {
     // 1) Pak posities
