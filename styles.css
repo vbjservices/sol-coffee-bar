@@ -17,6 +17,7 @@
   --sun-top: 45%;
   --sun-origin-x: 50%;
   --sun-origin-y: 50%;
+  --sun-size: 20%;
 }
 
 * { box-sizing: border-box; }
@@ -81,7 +82,7 @@ h1, h2 {
 
 .brand__sun {
   position: absolute;
-  width: 20%;
+  width: var(--sun-size);
   height: auto;
   left: var(--sun-left);
   top: var(--sun-top);
@@ -402,7 +403,7 @@ h1, h2 {
 }
 .intro__sun {
   position: absolute;
-  width: 20%;
+  width: var(--sun-size);
   height: auto;
   left: var(--sun-left);
   top: var(--sun-top);
@@ -463,12 +464,19 @@ h1, h2 {
 }
 
 @media (max-width: 640px) {
-  :root { --logo-h: 50px; }
+  :root {
+    --logo-h: 46px;
+    --sun-size: 22%;
+    --sun-left: 50%;
+    --sun-top: 46%;
+  }
   .header {
     top: 8px;
     margin-top: 8px;
   }
-  .brand__sublogo { height: 16px; }
+  .brand__sublogo { height: 15px; }
+  .intro__logo { width: min(380px, 80vw); }
+  .intro__sublogo { width: min(210px, 72vw); }
   .main {
     padding: 36px 16px 80px;
     gap: 22px;
