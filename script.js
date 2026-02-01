@@ -17,6 +17,7 @@ window.addEventListener("load", () => {
   headerBrand.style.visibility = "hidden";
 
   const startMs = 120;
+  const sunDropDelayMs = 160;
   const logoInMs = 450;
   const sublogoInMs = 900;
   const holdMs = 350;
@@ -28,11 +29,17 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     introSun.classList.add("is-drop");
-  }, startMs + 160);
+  }, startMs + sunDropDelayMs);
 
   setTimeout(() => {
     introSublogo.classList.add("is-reveal");
   }, startMs + logoInMs);
+
+  const dropStartMs = startMs + sunDropDelayMs;
+  const moveStartMs = startMs + logoInMs + sublogoInMs + holdMs;
+  const introEndMs = moveStartMs + durationMs + 350;
+  const spinMs = Math.max(600, introEndMs - dropStartMs);
+  introSun.style.setProperty("--sun-spin", `${spinMs}ms`);
 
   setTimeout(() => {
     // 1) Pak posities
@@ -70,5 +77,5 @@ window.addEventListener("load", () => {
         intro.remove();
       }, 350);
     }, durationMs);
-  }, startMs + logoInMs + sublogoInMs + holdMs);
+  }, moveStartMs);
 });
