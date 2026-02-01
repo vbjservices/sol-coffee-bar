@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
   // Zorg dat header-logo onzichtbaar is tot animatie klaar is
   headerLogo.style.visibility = "hidden";
 
-  const delayMs = 1500;  // 1–2 seconden: pas aan
+  const delayMs = 1500;  // 1-2 seconden: pas aan
   const durationMs = 550;
 
   setTimeout(() => {
