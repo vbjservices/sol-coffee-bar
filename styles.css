@@ -16,7 +16,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: "Manrope", sans-serif;
+  font-family: "Caveat", "Manrope", sans-serif;
   line-height: 1.6;
   background:
     radial-gradient(1200px 600px at 10% -10%, #fff6e8 0%, transparent 60%),
@@ -26,7 +26,6 @@ body {
 }
 
 h1, h2 {
-  font-family: "Fraunces", serif;
   font-weight: 600;
   margin: 0;
 }
@@ -180,8 +179,7 @@ h1, h2 {
 }
 
 .menu-title {
-  font-family: "Fraunces", serif;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0 0 10px;
 }
 
@@ -246,7 +244,6 @@ h1, h2 {
   padding-bottom: 0;
 }
 .menu-page .menu-hero h1 {
-  font-family: "Caveat", cursive;
   font-size: clamp(54px, 10vw, 92px);
   letter-spacing: 0.02em;
 }
@@ -269,7 +266,6 @@ h1, h2 {
   box-shadow: 0 16px 30px rgba(64, 44, 32, 0.08);
 }
 .menu-page .menu-title {
-  font-family: "Caveat", cursive;
   font-size: 26px;
   letter-spacing: 0.02em;
 }
@@ -278,7 +274,6 @@ h1, h2 {
   letter-spacing: 0.12em;
 }
 .menu-page .menu-item span:first-child {
-  font-family: "Caveat", cursive;
   font-size: 20px;
   letter-spacing: 0.01em;
 }
