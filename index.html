@@ -15,13 +15,25 @@
 <body>
   <!-- INTRO OVERLAY -->
   <div class="intro" id="intro" aria-hidden="true">
-    <img class="intro__logo" id="introLogo" src="assets/logo.png" alt="SOL Coffee Bar logo" />
+    <div class="intro__brand" id="introBrand">
+      <div class="intro__logo-wrap">
+        <img class="intro__logo" id="introLogo" src="assets/logo.png" alt="SOL Coffee Bar logo" />
+        <img class="intro__sun" id="introSun" src="assets/Drawn_Sun.png" alt="" aria-hidden="true" />
+      </div>
+      <img class="intro__sublogo" id="introSublogo" src="assets/coffee_bar.png" alt="Coffee bar" />
+    </div>
   </div>
 
   <!-- SITE -->
   <header class="header">
     <a class="brand" href="#">
-      <img class="brand__logo" id="headerLogo" src="assets/logo.png" alt="SOL Coffee Bar" />
+      <span class="brand__stack" id="headerBrand">
+        <span class="brand__logo-wrap">
+          <img class="brand__logo" src="assets/logo.png" alt="SOL Coffee Bar" />
+          <img class="brand__sun" src="assets/Drawn_Sun.png" alt="" aria-hidden="true" />
+        </span>
+        <img class="brand__sublogo" src="assets/coffee_bar.png" alt="Coffee bar" />
+      </span>
     </a>
 
     <nav class="nav">
@@ -35,7 +47,7 @@
   <main class="main" id="main">
     <section class="hero">
       <h1>Good coffee.<br/>Cozy mornings.</h1>
-      <p>Genuine, warm, and made with love.</p>
+      <p>Genuine & warm coffee, made with love.</p>
       <div class="hero__cta">
         <a class="btn" href="menu.html">Bekijk menu</a>
         <a class="btn btn--ghost" href="#location">Route</a>

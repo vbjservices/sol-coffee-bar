@@ -1,29 +1,53 @@
 window.addEventListener("load", () => {
   const intro = document.getElementById("intro");
+  const introBrand = document.getElementById("introBrand");
   const introLogo = document.getElementById("introLogo");
-  const headerLogo = document.getElementById("headerLogo");
+  const introSun = document.getElementById("introSun");
+  const introSublogo = document.getElementById("introSublogo");
+  const headerBrand = document.getElementById("headerBrand");
   const main = document.getElementById("main");
 
-  // Zorg dat header-logo onzichtbaar is tot animatie klaar is
-  headerLogo.style.visibility = "hidden";
+  if (!intro || !introBrand || !introLogo || !introSun || !introSublogo || !headerBrand || !main) return;
 
-  const delayMs = 1500;  // 1-2 seconden: pas aan
-  const durationMs = 550;
+  const showMain = () => {
+    main.classList.add("is-visible");
+  };
+
+  // Zorg dat header-logo onzichtbaar is tot animatie klaar is
+  headerBrand.style.visibility = "hidden";
+
+  const startMs = 120;
+  const logoInMs = 450;
+  const sublogoInMs = 900;
+  const holdMs = 350;
+  const durationMs = 650;
+
+  setTimeout(() => {
+    introLogo.classList.add("is-in");
+  }, startMs);
+
+  setTimeout(() => {
+    introSun.classList.add("is-drop");
+  }, startMs + 160);
+
+  setTimeout(() => {
+    introSublogo.classList.add("is-reveal");
+  }, startMs + logoInMs);
 
   setTimeout(() => {
     // 1) Pak posities
-    const from = introLogo.getBoundingClientRect();
-    const to = headerLogo.getBoundingClientRect();
+    const from = introBrand.getBoundingClientRect();
+    const to = headerBrand.getBoundingClientRect();
 
-    // 2) Zet introLogo in "absolute overlay" mode zodat hij exact kan bewegen
-    introLogo.style.position = "fixed";
-    introLogo.style.left = `${from.left}px`;
-    introLogo.style.top = `${from.top}px`;
-    introLogo.style.width = `${from.width}px`;
-    introLogo.style.height = "auto";
+    // 2) Zet introBrand in "absolute overlay" mode zodat hij exact kan bewegen
+    introBrand.style.position = "fixed";
+    introBrand.style.left = `${from.left}px`;
+    introBrand.style.top = `${from.top}px`;
+    introBrand.style.width = `${from.width}px`;
+    introBrand.style.height = "auto";
 
     // Force reflow
-    introLogo.getBoundingClientRect();
+    introBrand.getBoundingClientRect();
 
     // 3) Bereken deltas & schaal
     const dx = to.left - from.left;
@@ -31,21 +55,20 @@ window.addEventListener("load", () => {
     const scale = to.width / from.width;
 
     // 4) Animate naar header plek
-    introLogo.style.transition = `transform ${durationMs}ms cubic-bezier(.2,.9,.2,1)`;
-    introLogo.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+    introBrand.style.transition = `transform ${durationMs}ms cubic-bezier(.2,.9,.2,1)`;
+    introBrand.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
 
     // 5) Content erin laten komen
-    main.classList.add("is-visible");
+    showMain();
 
     // 6) Na animatie: intro weg, header-logo tonen
     setTimeout(() => {
-      headerLogo.style.visibility = "visible";
+      headerBrand.style.visibility = "visible";
       intro.style.opacity = "0";
 
       setTimeout(() => {
         intro.remove();
       }, 350);
     }, durationMs);
-
-  }, delayMs);
+  }, startMs + logoInMs + sublogoInMs + holdMs);
 });
